@@ -13,3 +13,5 @@ venv/
 issues.json
 pulls.json
 report.xml
+lib
+draft-leddy-6man-truncate.xml
