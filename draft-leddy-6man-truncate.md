@@ -67,7 +67,7 @@ contain links and intermediate nodes (e.g., routers).
 
 Each link is constrained by the number of bytes that it can convey in a single
 IP packet. This constraint is called the link Maximum Transmission Unit
-(MTU). IPv6 ({{!IPv6=RFC8200}}) requires every link to have an MTU of 1280 bytes
+(MTU). IPv6 {{!IPv6=RFC8200}} requires every link to have an MTU of 1280 bytes
 or greater. This value is called IPv6 minimum link MTU.
 
 Likewise, each Internet path is constrained by the number of bytes that it can
@@ -84,7 +84,7 @@ packet. In order to prevent this, IPv6 nodes can either:
   length exceeds that estimate.
 
 In order to maintain a running estimate of the PMTU, IPv6 nodes can execute Path
-MTU Discovery (PMTUD) ({{!RFC8201}}) procedures. In these procedures, the source
+MTU Discovery (PMTUD) {{!RFC8201}} procedures. In these procedures, the source
 node produces an initial PMTU estimate. This initial estimate equals the MTU of
 the first link along the path to the destination. It can be greater than the
 actual PMTU.
@@ -93,7 +93,7 @@ Having produced an initial PMTU estimate, the source node sends packets to the
 destination node. If one of these packets is larger than the actual PMTU, an
 intermediate node will not be able to forward the packet through the next link
 along the path. Therefore, the intermediate node discards the packet and sends
-an Internet Control Message Protocol (ICMP) ({{!ICMP=RFC4443}} Packet Too Big
+an Internet Control Message Protocol (ICMP) {{!RFC4443}} Packet Too Big
 (PTB) message to the source node. The ICMP PTB message indicates the MTU of the
 link through which the packet could not be forwarded. The source node uses this
 information to refine its PMTU estimate.
@@ -109,7 +109,7 @@ PMTU. The intermediate node discards these packets and sends more ICMP PTB
 messages to the source. These ICMP PTB messages are lost, exactly as previous
 ICMP PTB messages were lost.
 
-In some operational scenarios ({{OpCon}}), networks cannot deliver ICMP PTB
+In some operational scenarios {{OpCon}}, networks cannot deliver ICMP PTB
 messages from an intermediate node to the source node. Therefore, enhanced
 procedures are required.
 
@@ -151,7 +151,7 @@ when, and only when, they appear in all capitals, as shown here.
 Reference Topology     {#ReferenceTopology}
 ==================
 
-~~~
+~~~~~
  -----------            -----------            -----------            -----------
 |   Upper   |          |           |          |           |          |   Upper   |
 |   Layer   |          |           |          |           |          |   Layer   |
@@ -161,7 +161,8 @@ Reference Topology     {#ReferenceTopology}
  -----------    9000    -----------    4000    -----------    1500    -----------
    Source                 Router 1               Router 2             Destination
     Node                                                                 Node
-~~~
+~~~~~
+{: #RefTopoSect title="Reference Topology"}
 
 The reference network topology contains a Source Node, intermediate nodes (i.e.,
 Router 1, Router 2), and a Destination Node. The link that connects the Source
@@ -181,7 +182,7 @@ The Truncation Eligible Option   {#TuncEilig}
 ------------------------------
 
 The Truncation Eligible option indicates that the packet is eligible for
-truncation using basic truncation procedures ({{BasicP}}). It also indicates
+truncation using basic truncation procedures {{BasicP}}. It also indicates
 that the packet has not been truncated.
 
 The Truncation Eligible option contains the following fields:
@@ -206,10 +207,10 @@ The IPv6 Destination Options header:
 * SHOULD NOT include multiple instances of the Truncation Eligible option.
 
 * MUST NOT include both the Truncation Eligible option and the Enhanced
-  Truncation Eligible option ({{ETuncEilig}}).
+  Truncation Eligible option {{ETuncEilig}}.
 
 * MUST NOT include both the Truncation Eligible option and the Truncated Packet
-  option ({{TruncatedOpt}}).
+  option {{TruncatedOpt}}.
 
 NOTE 1: According to {{!IPv6}}, the highest-order two bits of the Option Type
         (i.e., the "act" bits) specify the action taken by a processing node
@@ -223,11 +224,11 @@ NOTE 2: According to {{!IPv6}}, the third-highest-order bit (i.e., the "chg"
         Option Data, IANA can assign this Option Type without regard to the
         "chg" bit.
 
-The Enhanced Truncation Eligible Option   #ETuncEilig
+The Enhanced Truncation Eligible Option   {#ETuncEilig}
 ---------------------------------------
 
 The Enhanced Truncation Eligible option indicates that the packet is eligible
-for truncation using enhanced truncation procedures ({{EnhancedP}}). It also
+for truncation using enhanced truncation procedures {{EnhancedP}}. It also
 indicates that the packet may have been padded by the source node and / or
 truncated by an intermediate node.
 
@@ -240,6 +241,7 @@ truncated by an intermediate node.
 |T|  Reserved   |
 +-+-+-+-+-+-+-+-+
 ~~~~~~
+{: #ETEFig title="The Enhanced Truncation Eligible Option"}
 
 The Enhanced Truncation Eligible option contains:
 
@@ -278,7 +280,7 @@ The IPv6 Destination Options header:
   Truncation Eligible option.
 
 * MUST NOT include both the Enhanced Truncation Eligible option and the
-  Truncated Packet option ({{TruncatedOpt}}.
+  Truncated Packet option {{TruncatedOpt}}.
 
 NOTE 1: According to {{!IPv6}}, the highest-order two bits of the Option Type
 (i.e., the "act" bits) specify the action taken by a processing node that does
@@ -292,11 +294,11 @@ bit) of the Option Type specifies whether Option Data can change on route to the
 packet's destination. Because Option Data can change, IANA is requested to
 assign this Option Type with "chg" bit "1".
 
-The Truncated Packet Option     #TruncatedOpt
+The Truncated Packet Option     {#TruncatedOpt}
 ---------------------------
 
 The Truncated Packet option indicates that the packet has been truncated and is
-eligible for further truncation using basic procedures ({{BasicP}}).
+eligible for further truncation using basic procedures {{BasicP}}.
 
 The Truncated Packet option contains the following fields:
 
@@ -338,7 +340,7 @@ on route to the packet's destination. Because this option contains no Option
 Data, IANA can assign this Option Type without regard to the "chg" bit.
 
 
-Truncation Procedures     #signaling
+Truncation Procedures     {#signaling}
 =====================
 
 A single IPv6 flow can contain the following:
@@ -352,9 +354,9 @@ A single IPv6 flow can contain the following:
 * Packets that contain none of the above-mentioned options.
 
 Packets that contain either the Truncation Eligible option or the Truncated
-Packet option are subject to basic truncation procedures ({{BasicP}}). Packets
+Packet option are subject to basic truncation procedures {{BasicP}}. Packets
 that contain the Enhanced Truncation Eligible option are subject to enhanced
-truncation procedures ({{EnhancedP}}). Packets that contain neither of these
+truncation procedures {{EnhancedP}}. Packets that contain neither of these
 options are not subject to truncation.
 
 Basic truncation procedures can detect PMTU decreases. However, they cannot:
@@ -368,10 +370,10 @@ problems. However, the overhead associated enhanced procedures is
 significant. Therefore, upper-layer protocols emit an appropriate mix of the
 above-mentioned packet types.
 
-Basic     #BasicP
+Basic     {#BasicP}
 -----
 
-In the Reference Topology ({{ReferenceTopology}}), the Source Node produces an
+In the Reference Topology {{ReferenceTopology}}, the Source Node produces an
 initial estimate of the PMTU between itself and the Destination Node. This
 initial estimate equals the MTU of the first link on the path to the Destination
 Node (e.g., 9000 bytes).
@@ -440,7 +442,7 @@ When the Source Node receives the ICMP PTB message, it updates its PMTU
 estimate, as per {{!RFC8201}}.
 
 NOTE: A packet can be truncated multiple times. In the reference topology
-({{ReferenceTopology}}), assume that the Source Node sends a 5000 byte packet
+{{ReferenceTopology}}, assume that the Source Node sends a 5000 byte packet
 containing a Truncation Eligible option to the Destination Node. Using the
 above-mentioned procedures, Router 1 truncates the packet to 4000 bytes and
 Router 2 truncates it again, this time to 1500 bytes. The Destination Node
@@ -483,10 +485,10 @@ The source node takes appropriate action when it receives the ICMP Parameter
 Problem message.
 
 
-Enhanced    #EnhancedP
+Enhanced    {#EnhancedP}
 --------
 
-In the Reference Topology ({{ReferenceTopology}}), an upper-layer protocol on
+In the Reference Topology {{ReferenceTopology}}, an upper-layer protocol on
 the Source Node causes the IP layer to send a packet to the Destination
 Node. The packet includes:
 
@@ -695,7 +697,7 @@ The procedures described herein rely upon the networks ability:
 
 * To convey ICMP Parameter Problem messages in the reverse direction.
 
-Operational experience ({{?RFC7872}}) reveals that a significant number of
+Operational experience {{?RFC7872}} reveals that a significant number of
 networks drop packets that contain IPv6 destination options. Likewise, many
 networks drop ICMP Parameter Problem messages.
 
@@ -709,7 +711,7 @@ Encapsulating Security Payload Considerations
 
 An IPv6 packet can contain both:
 
-* An Encapsulating Security Payload (ESP) header ({{!RFC4303}}).
+* An Encapsulating Security Payload (ESP) header {{!RFC4303}}.
 
 * Truncation options (i.e., the Truncation Eligible, Truncated Packet, or
   Enhanced Truncation Eligible options).
@@ -735,7 +737,7 @@ According to {{IPv6}}, the following IPv6 extension headers can contain options:
 
 The Hop-by-hop option can be examined by each node along the path to a packet's
 destination. Destination options are examined by the destination node
-only. However, {{!RFC2473}} provides a precedent for intermediate nodes
+only. However, {{?RFC2473}} provides a precedent for intermediate nodes
 examining the Destination options on an exception basis. (See the Tunnel
 Encapsulation Limit.)
 
@@ -754,7 +756,7 @@ contained by the Hop-by-hop Options header, they are always examined by
 intermediate nodes, even when they are irrelevant.
 
 
-Operational Considerations   #OpCon
+Operational Considerations   {#OpCon}
 ==========================
 
 The packet truncation procedures described herein make PMTUD more resilient
@@ -797,7 +799,7 @@ messages to the source node:
   {{?RFC7690}}.
 
 
-Security Considerations    #Security
+Security Considerations    {#Security}
 =======================
 
 PMTUD is vulnerable to ICMP PTB forgery attacks. The procedures described herein
@@ -815,7 +817,7 @@ IANA Considerations
 ===================
 
 IANA is requested to allocate the following codepoints from the Destination
-Options and Hop-by-hop Options registry ({{IPv6Param}}).
+Options and Hop-by-hop Options registry {{IPv6Param}}.
 
 * Truncation Eligible ("act-bits" are "00. "chg-bit" can be either 0 or 1.)
 
@@ -824,7 +826,7 @@ Options and Hop-by-hop Options registry ({{IPv6Param}}).
 * Truncated Packet ("act-bits" are "10". "chg-but can be either 0 or 1.)
 
 
-Acknowledgements   #Acknowledgements
+Acknowledgements   {#Acknowledgements}
 ================
 
 Special thanks to Mike Heard, Geoff Huston, Joel Jaeggli, Tom Jones, Andy Smith,
