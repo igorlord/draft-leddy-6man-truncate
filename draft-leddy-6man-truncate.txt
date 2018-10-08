@@ -5,8 +5,8 @@
 6man                                                            J. Leddy
 Internet-Draft                                              Unaffiliated
 Intended status: Standards Track                               R. Bonica
-Expires: April 2, 2019                                  Juniper Networks
-                                                      September 29, 2018
+Expires: April 11, 2019                                 Juniper Networks
+                                                         October 8, 2018
 
 
                          IPv6 Packet Truncation
@@ -34,7 +34,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 2, 2019.
+   This Internet-Draft will expire on April 11, 2019.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Leddy & Bonica            Expires April 2, 2019                 [Page 1]
+Leddy & Bonica           Expires April 11, 2019                 [Page 1]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
 Table of Contents
@@ -93,8 +93,8 @@ Table of Contents
 
    Each link is constrained by the number of bytes that it can convey in
    a single IP packet.  This constraint is called the link Maximum
-   Transmission Unit (MTU).  IPv6 [IPv6] requires every link to have an
-   MTU of 1280 bytes or greater.  This value is called IPv6 minimum link
+   Transmission Unit (MTU).  [IPv6] requires every link to have an MTU
+   of 1280 bytes or greater.  This value is called IPv6 minimum link
    MTU.
 
    Likewise, each Internet path is constrained by the number of bytes
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Leddy & Bonica            Expires April 2, 2019                 [Page 2]
+Leddy & Bonica           Expires April 11, 2019                 [Page 2]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    -  Refrain from sending packets whose length exceeds the IPv6 minimum
@@ -165,9 +165,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                 [Page 3]
+Leddy & Bonica           Expires April 11, 2019                 [Page 3]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    message contains MTU information that the source node uses to update
@@ -221,9 +221,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                 [Page 4]
+Leddy & Bonica           Expires April 11, 2019                 [Page 4]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    MTU of 1500 bytes.  The PMTU between the Source Node and the
@@ -277,9 +277,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                 [Page 5]
+Leddy & Bonica           Expires April 11, 2019                 [Page 5]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    skip over this option and continue processing the header.  Therefore,
@@ -333,9 +333,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                 [Page 6]
+Leddy & Bonica           Expires April 11, 2019                 [Page 6]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    IPv6 packets whose length is less than the IPv6 minimum link MTU
@@ -389,9 +389,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                 [Page 7]
+Leddy & Bonica           Expires April 11, 2019                 [Page 7]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    IPv6 packets that include the Fragment header MUST NOT include the
@@ -445,9 +445,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                 [Page 8]
+Leddy & Bonica           Expires April 11, 2019                 [Page 8]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    Packets that contain either the Truncation Eligible option or the
@@ -501,9 +501,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                 [Page 9]
+Leddy & Bonica           Expires April 11, 2019                 [Page 9]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    Subsequently, the same upper-layer protocol on the Source Node causes
@@ -557,9 +557,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                [Page 10]
+Leddy & Bonica           Expires April 11, 2019                [Page 10]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    Node.  Using the above-mentioned procedures, Router 1 truncates the
@@ -613,9 +613,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                [Page 11]
+Leddy & Bonica           Expires April 11, 2019                [Page 11]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
 5.2.  Enhanced
@@ -669,9 +669,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                [Page 12]
+Leddy & Bonica           Expires April 11, 2019                [Page 12]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    -  Updates the IPv6 Payload Length.
@@ -725,9 +725,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                [Page 13]
+Leddy & Bonica           Expires April 11, 2019                [Page 13]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    In all of the above-mentioned cases, the IP layer on the Destination
@@ -781,9 +781,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                [Page 14]
+Leddy & Bonica           Expires April 11, 2019                [Page 14]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    This is required because stateful middleboxes residing downstream of
@@ -837,9 +837,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                [Page 15]
+Leddy & Bonica           Expires April 11, 2019                [Page 15]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    If an intermediate node cannot forward one of the above-mentioned
@@ -893,9 +893,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                [Page 16]
+Leddy & Bonica           Expires April 11, 2019                [Page 16]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    In this case, the packet MUST contain a Destination Options header
@@ -949,9 +949,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                [Page 17]
+Leddy & Bonica           Expires April 11, 2019                [Page 17]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    -  The network cannot deliver ICMP messages from an intermediate node
@@ -1005,9 +1005,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                [Page 18]
+Leddy & Bonica           Expires April 11, 2019                [Page 18]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
 13.  IANA Considerations
@@ -1061,9 +1061,9 @@ Internet-Draft           IPv6 Packet Truncation           September 2018
 
 
 
-Leddy & Bonica            Expires April 2, 2019                [Page 19]
+Leddy & Bonica           Expires April 11, 2019                [Page 19]
 
-Internet-Draft           IPv6 Packet Truncation           September 2018
+Internet-Draft           IPv6 Packet Truncation             October 2018
 
 
    [RFC8201]  McCann, J., Deering, S., Mogul, J., and R. Hinden, Ed.,
@@ -1117,4 +1117,4 @@ Authors' Addresses
 
 
 
-Leddy & Bonica            Expires April 2, 2019                [Page 20]
+Leddy & Bonica           Expires April 11, 2019                [Page 20]
