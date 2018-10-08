@@ -67,8 +67,8 @@ contain links and intermediate nodes (e.g., routers).
 
 Each link is constrained by the number of bytes that it can convey in a single
 IP packet. This constraint is called the link Maximum Transmission Unit
-(MTU). IPv6 {{!IPv6=RFC8200}} requires every link to have an MTU of 1280 bytes
-or greater. This value is called IPv6 minimum link MTU.
+(MTU). {{!IPv6=RFC8200}} requires every link to have an MTU of 1280 bytes or
+greater. This value is called IPv6 minimum link MTU.
 
 Likewise, each Internet path is constrained by the number of bytes that it can
 convey in a single IP packet. This constraint is called the Path MTU (PMTU). For
