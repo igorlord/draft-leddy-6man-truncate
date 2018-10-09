@@ -283,39 +283,35 @@ ul.toc li {
   <link href="#rfc.toc" rel="Contents">
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
 <link href="#rfc.section.2" rel="Chapter" title="2 Requirements Language">
-<link href="#rfc.section.3" rel="Chapter" title="3 Reference Topology">
+<link href="#rfc.section.3" rel="Chapter" title="3 Operational Considerations">
 <link href="#rfc.section.4" rel="Chapter" title="4 IPv6 Destination Options">
 <link href="#rfc.section.4.1" rel="Chapter" title="4.1 The Truncation Eligible Option">
-<link href="#rfc.section.4.2" rel="Chapter" title="4.2 The Enhanced Truncation Eligible Option">
-<link href="#rfc.section.4.3" rel="Chapter" title="4.3 The Truncated Packet Option">
-<link href="#rfc.section.5" rel="Chapter" title="5 Truncation Procedures">
-<link href="#rfc.section.5.1" rel="Chapter" title="5.1 Basic">
-<link href="#rfc.section.5.1.1" rel="Chapter" title="5.1.1 Backwards Compatibility">
-<link href="#rfc.section.5.2" rel="Chapter" title="5.2 Enhanced">
-<link href="#rfc.section.5.2.1" rel="Chapter" title="5.2.1 Backwards Compatibility">
-<link href="#rfc.section.6" rel="Chapter" title="6 Checksum Considerations">
-<link href="#rfc.section.7" rel="Chapter" title="7 Invalid Packet Types">
-<link href="#rfc.section.8" rel="Chapter" title="8 Network Considerations">
-<link href="#rfc.section.9" rel="Chapter" title="9 Encapsulating Security Payload Considerations">
-<link href="#rfc.section.10" rel="Chapter" title="10 Extension Header Considerations">
-<link href="#rfc.section.11" rel="Chapter" title="11 Operational Considerations">
-<link href="#rfc.section.12" rel="Chapter" title="12 Security Considerations">
-<link href="#rfc.section.13" rel="Chapter" title="13 IANA Considerations">
-<link href="#rfc.section.14" rel="Chapter" title="14 Acknowledgements">
-<link href="#rfc.references" rel="Chapter" title="15 References">
-<link href="#rfc.references.1" rel="Chapter" title="15.1 Normative References">
-<link href="#rfc.references.2" rel="Chapter" title="15.2 Informative References">
+<link href="#rfc.section.4.2" rel="Chapter" title="4.2 The Truncated Packet Option">
+<link href="#rfc.section.5" rel="Chapter" title="5 Reference Topology">
+<link href="#rfc.section.6" rel="Chapter" title="6 Truncation Procedures">
+<link href="#rfc.section.7" rel="Chapter" title="7 Backwards Compatibility">
+<link href="#rfc.section.8" rel="Chapter" title="8 Checksum Considerations">
+<link href="#rfc.section.9" rel="Chapter" title="9 Invalid Packet Types">
+<link href="#rfc.section.10" rel="Chapter" title="10 Network Considerations">
+<link href="#rfc.section.11" rel="Chapter" title="11 Encapsulating Security Payload Considerations">
+<link href="#rfc.section.12" rel="Chapter" title="12 Extension Header Considerations">
+<link href="#rfc.section.13" rel="Chapter" title="13 Security Considerations">
+<link href="#rfc.section.14" rel="Chapter" title="14 IANA Considerations">
+<link href="#rfc.section.15" rel="Chapter" title="15 Acknowledgements">
+<link href="#rfc.references" rel="Chapter" title="16 References">
+<link href="#rfc.references.1" rel="Chapter" title="16.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="16.2 Informative References">
 <link href="#rfc.authors" rel="Chapter">
 
 
   <meta name="generator" content="xml2rfc version 2.10.3 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
-  <meta name="dct.creator" content="Leddy, J. and R. Bonica" />
+  <meta name="dct.creator" content="Leddy, J., Bonica, R., and I. Lubashev" />
   <meta name="dct.identifier" content="urn:ietf:id:draft-leddy-6man-truncate-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-08" />
-  <meta name="dct.abstract" content="This document defines IPv6 packet truncation procedures. These procedures MAKE Path MTU Discovery (PMTUD) more reliable. Upper-layer protocols can use these procedures to reduce their dependence on IPv6 fragmentation and PMTUD." />
-  <meta name="description" content="This document defines IPv6 packet truncation procedures. These procedures MAKE Path MTU Discovery (PMTUD) more reliable. Upper-layer protocols can use these procedures to reduce their dependence on IPv6 fragmentation and PMTUD." />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-09" />
+  <meta name="dct.abstract" content="This document defines IPv6 packet truncation procedures. These procedures make Path MTU Discovery (PMTUD) more reliable. Upper-layer protocols can leverage these procedures in order to take advantage of larger MTUs." />
+  <meta name="description" content="This document defines IPv6 packet truncation procedures. These procedures make Path MTU Discovery (PMTUD) more reliable. Upper-layer protocols can leverage these procedures in order to take advantage of larger MTUs." />
 
 </head>
 
@@ -337,12 +333,20 @@ ul.toc li {
 <td class="right">R. Bonica</td>
 </tr>
 <tr>
-<td class="left">Expires: April 11, 2019</td>
+<td class="left">Expires: April 12, 2019</td>
 <td class="right">Juniper Networks</td>
 </tr>
 <tr>
 <td class="left"></td>
-<td class="right">October 8, 2018</td>
+<td class="right">I. Lubashev</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">Akamai Technologies</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">October 9, 2018</td>
 </tr>
 
     	
@@ -353,12 +357,12 @@ ul.toc li {
   <span class="filename">draft-leddy-6man-truncate-latest</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-<p>This document defines IPv6 packet truncation procedures. These procedures MAKE Path MTU Discovery (PMTUD) more reliable. Upper-layer protocols can use these procedures to reduce their dependence on IPv6 fragmentation and PMTUD.</p>
+<p>This document defines IPv6 packet truncation procedures. These procedures make Path MTU Discovery (PMTUD) more reliable. Upper-layer protocols can leverage these procedures in order to take advantage of larger MTUs.</p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on April 11, 2019.</p>
+<p>This Internet-Draft will expire on April 12, 2019.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -372,49 +376,41 @@ ul.toc li {
 </li>
 <li>2.   <a href="#rfc.section.2">Requirements Language</a>
 </li>
-<li>3.   <a href="#rfc.section.3">Reference Topology</a>
+<li>3.   <a href="#rfc.section.3">Operational Considerations</a>
 </li>
 <li>4.   <a href="#rfc.section.4">IPv6 Destination Options</a>
 </li>
 <ul><li>4.1.   <a href="#rfc.section.4.1">The Truncation Eligible Option</a>
 </li>
-<li>4.2.   <a href="#rfc.section.4.2">The Enhanced Truncation Eligible Option</a>
+<li>4.2.   <a href="#rfc.section.4.2">The Truncated Packet Option</a>
 </li>
-<li>4.3.   <a href="#rfc.section.4.3">The Truncated Packet Option</a>
+</ul><li>5.   <a href="#rfc.section.5">Reference Topology</a>
 </li>
-</ul><li>5.   <a href="#rfc.section.5">Truncation Procedures</a>
+<li>6.   <a href="#rfc.section.6">Truncation Procedures</a>
 </li>
-<ul><li>5.1.   <a href="#rfc.section.5.1">Basic</a>
+<li>7.   <a href="#rfc.section.7">Backwards Compatibility</a>
 </li>
-<ul><li>5.1.1.   <a href="#rfc.section.5.1.1">Backwards Compatibility</a>
+<li>8.   <a href="#rfc.section.8">Checksum Considerations</a>
 </li>
-</ul><li>5.2.   <a href="#rfc.section.5.2">Enhanced</a>
+<li>9.   <a href="#rfc.section.9">Invalid Packet Types</a>
 </li>
-<ul><li>5.2.1.   <a href="#rfc.section.5.2.1">Backwards Compatibility</a>
+<li>10.   <a href="#rfc.section.10">Network Considerations</a>
 </li>
-</ul></ul><li>6.   <a href="#rfc.section.6">Checksum Considerations</a>
+<li>11.   <a href="#rfc.section.11">Encapsulating Security Payload Considerations</a>
 </li>
-<li>7.   <a href="#rfc.section.7">Invalid Packet Types</a>
+<li>12.   <a href="#rfc.section.12">Extension Header Considerations</a>
 </li>
-<li>8.   <a href="#rfc.section.8">Network Considerations</a>
+<li>13.   <a href="#rfc.section.13">Security Considerations</a>
 </li>
-<li>9.   <a href="#rfc.section.9">Encapsulating Security Payload Considerations</a>
+<li>14.   <a href="#rfc.section.14">IANA Considerations</a>
 </li>
-<li>10.   <a href="#rfc.section.10">Extension Header Considerations</a>
+<li>15.   <a href="#rfc.section.15">Acknowledgements</a>
 </li>
-<li>11.   <a href="#rfc.section.11">Operational Considerations</a>
+<li>16.   <a href="#rfc.references">References</a>
 </li>
-<li>12.   <a href="#rfc.section.12">Security Considerations</a>
+<ul><li>16.1.   <a href="#rfc.references.1">Normative References</a>
 </li>
-<li>13.   <a href="#rfc.section.13">IANA Considerations</a>
-</li>
-<li>14.   <a href="#rfc.section.14">Acknowledgements</a>
-</li>
-<li>15.   <a href="#rfc.references">References</a>
-</li>
-<ul><li>15.1.   <a href="#rfc.references.1">Normative References</a>
-</li>
-<li>15.2.   <a href="#rfc.references.2">Informative References</a>
+<li>16.2.   <a href="#rfc.references.2">Informative References</a>
 </li>
 </ul><li><a href="#rfc.authors">Authors' Addresses</a>
 </li>
@@ -425,7 +421,7 @@ ul.toc li {
   <h1 id="rfc.section.1">
 <a href="#rfc.section.1">1.</a> <a href="#Intro" id="Intro">Introduction</a>
 </h1>
-<p id="rfc.section.1.p.1">An Internet path connects a source node to a destination node. A path can contain links and intermediate nodes (e.g., routers).</p>
+<p id="rfc.section.1.p.1">An Internet path connects a source node to a destination node. A path can contain links and routers.</p>
 <p id="rfc.section.1.p.2">Each link is constrained by the number of bytes that it can convey in a single IP packet. This constraint is called the link Maximum Transmission Unit (MTU). <a href="#IPv6" class="xref">[IPv6]</a> requires every link to have an MTU of 1280 bytes or greater. This value is called IPv6 minimum link MTU.</p>
 <p id="rfc.section.1.p.3">Likewise, each Internet path is constrained by the number of bytes that it can convey in a single IP packet. This constraint is called the Path MTU (PMTU). For any given path, the PMTU is equal to the smallest of its link MTUs.</p>
 <p id="rfc.section.1.p.4">IPv6 allows fragmentation at the source node only. If an IPv6 source node sends a packet whose length exceeds the PMTU, an intermediate node will discard the packet. In order to prevent this, IPv6 nodes can either:</p>
@@ -438,34 +434,66 @@ ul.toc li {
 <p id="rfc.section.1.p.6">In order to maintain a running estimate of the PMTU, IPv6 nodes can execute Path MTU Discovery (PMTUD) <a href="#RFC8201" class="xref">[RFC8201]</a> procedures. In these procedures, the source node produces an initial PMTU estimate. This initial estimate equals the MTU of the first link along the path to the destination. It can be greater than the actual PMTU.</p>
 <p id="rfc.section.1.p.7">Having produced an initial PMTU estimate, the source node sends packets to the destination node. If one of these packets is larger than the actual PMTU, an intermediate node will not be able to forward the packet through the next link along the path. Therefore, the intermediate node discards the packet and sends an Internet Control Message Protocol (ICMP) <a href="#RFC4443" class="xref">[RFC4443]</a> Packet Too Big (PTB) message to the source node. The ICMP PTB message indicates the MTU of the link through which the packet could not be forwarded. The source node uses this information to refine its PMTU estimate.</p>
 <p id="rfc.section.1.p.8">PMTUD relies on the network to deliver ICMP PTB messages from the intermediate node to the source node. If the network cannot deliver these messages, a persistent black hole can develop. In this scenario, the source node sends a packet whose length exceeds the PMTU. An intermediate node discards the packet and sends an ICMP PTB message to the source. However, the network cannot deliver the ICMP PTB message to the source. Therefore, the source node does not update its PMTU estimate and it continues to send packets whose length exceeds the PMTU. The intermediate node discards these packets and sends more ICMP PTB messages to the source. These ICMP PTB messages are lost, exactly as previous ICMP PTB messages were lost.</p>
-<p id="rfc.section.1.p.9">In some operational scenarios <a href="#OpCon" class="xref">Section 11</a>, networks cannot deliver ICMP PTB messages from an intermediate node to the source node. Therefore, enhanced procedures are required.</p>
-<p id="rfc.section.1.p.10">This document defines IPv6 packet truncation procedures. When an IPv6 source node originates a packet, it marks the packet as being eligible for truncation and forward it towards its destination. If an intermediate node cannot forward the packet because of an MTU issue, it truncates the packet, marks it as being truncated, and, again, forwards it towards its destination. When the destination node receives the packet, it detects that the packet has been truncated and sends an ICMP message to the source node. The ICMP message contains MTU information that the source node uses to update its PMTU estimate.</p>
-<p id="rfc.section.1.p.11">The above-mentioned procedures enhance PMTUD by eliminating its reliance on the network to deliver ICMP messages from an intermediate node to the source node. However, the above-mentioned procedures require the network to deliver ICMP messages from the destination node to the source node.</p>
-<p id="rfc.section.1.p.12">The procedures described herein prevent incomplete (i.e., truncated) data from being delivered to upper-layer protocols. However, they allow metadata regarding truncated packets to delivered to upper-layer protocols. Using this metadata, upper-layer protocols can infer the PMTU values and negotiate a maximum packet size with their upper-layer peers.  This can reduce the upper-layer protocol&#8217;s reliance upon IPv6 fragmentation and PMTUD.</p>
-<p id="rfc.section.1.p.13">While IPv6 packet truncation may facilitate new upper-layer procedures, upper-layer procedures are beyond the scope of this document.</p>
+<p id="rfc.section.1.p.9">In some operational scenarios <a href="#OpCon" class="xref">Section 3</a>, networks cannot deliver ICMP PTB messages from an intermediate node to the source node. Therefore, enhanced procedures are required.</p>
+<p id="rfc.section.1.p.10">This document defines IPv6 packet truncation procedures. When an IPv6 source node originates a packet, it executes the following procedure:</p>
+<p></p>
+
+<ul>
+<li>Marks the packet as being eligible for truncation.</li>
+<li>Forward the packet towards its destination.</li>
+</ul>
+<p id="rfc.section.1.p.12">If an intermediate node cannot forward the packet because of an MTU issue, it executes the following procedure:</p>
+<p></p>
+
+<ul>
+<li>Detect that the packet is eligible for truncation.</li>
+<li>Send an ICMP PTB message to the source node, with the MTU field indicating the MTU of the link through which the packet could not be forwarded.</li>
+<li>Truncate the packet.</li>
+<li>Mark the packet as being truncated.</li>
+<li>Update the packet&#8217;s upper-layer checksum (if possible).</li>
+<li>Forward the packet towards its destination.</li>
+</ul>
+<p id="rfc.section.1.p.14">When the destination node receives the packet, it executes the following procedure:</p>
+<p></p>
+
+<ul>
+<li>Detect that the packet has been truncated.</li>
+<li>Send an ICMP PTB message to the source node, with the MTU field indicating the length of the truncated packet.</li>
+<li>Discard the packet.</li>
+</ul>
+<p id="rfc.section.1.p.16">Both ICMP PTB messages, mentioned above, contain MTU information that the source node can use to refine its PMTU estimate.</p>
+<p id="rfc.section.1.p.17">The procedures described herein prevent incomplete (i.e., truncated) data from being delivered to upper-layer protocols. While IPv6 packet truncation may facilitate new upper-layer procedures, upper-layer procedures are beyond the scope of this document.</p>
+<p id="rfc.section.1.p.18">The procedures described herein make PMTUD more reliable by increasing the probability that the source node will receive ICMP PTB feedback from a downstream device. Even when the network cannot deliver ICMP PTB messages from an intermediate router to a source node, it may be able to deliver an ICMP PTB messages from the destination node to the source node.</p>
+<p id="rfc.section.1.p.19">However, the procedures described herein do not make PMTUD one hundred per cent reliable. In some operational scenarios, the network cannot deliver any ICMP messages to the source node, regardless of their origin.</p>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#ReqLang" id="ReqLang">Requirements Language</a>
 </h1>
 <p id="rfc.section.2.p.1">The key words &#8220;MUST&#8221;, &#8220;MUST NOT&#8221;, &#8220;REQUIRED&#8221;, &#8220;SHALL&#8221;, &#8220;SHALL NOT&#8221;, &#8220;SHOULD&#8221;, &#8220;SHOULD NOT&#8221;, &#8220;RECOMMENDED&#8221;, &#8220;NOT RECOMMENDED&#8221;, &#8220;MAY&#8221;, and &#8220;OPTIONAL&#8221; in this document are to be interpreted as described in BCP 14 <a href="#RFC2119" class="xref">[RFC2119]</a> <a href="#RFC8174" class="xref">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.</p>
 <h1 id="rfc.section.3">
-<a href="#rfc.section.3">3.</a> <a href="#ReferenceTopology" id="ReferenceTopology">Reference Topology</a>
+<a href="#rfc.section.3">3.</a> <a href="#OpCon" id="OpCon">Operational Considerations</a>
 </h1>
-<div id="rfc.figure.1"></div>
-<div id="RefTopoSect"></div>
-<pre>
- -----------            -----------            -----------            -----------
-|   Upper   |          |           |          |           |          |   Upper   |
-|   Layer   |          |           |          |           |          |   Layer   |
-|           |          |           |          |           |          |           |
-|    IP     |&lt;--------&gt;|    IP     |&lt;--------&gt;|    IP     |&lt;--------&gt;|    IP     |
-|   Layer   |    MTU   |   Layer   |    MTU   |   Layer   |   MTU    |   Layer   |
- -----------    9000    -----------    4000    -----------    1500    -----------
-   Source                 Router 1               Router 2             Destination
-    Node                                                                 Node
-</pre>
-<p class="figure">Figure 1: Reference Topology</p>
-<p id="rfc.section.3.p.1">The reference network topology contains a Source Node, intermediate nodes (i.e., Router 1, Router 2), and a Destination Node. The link that connects the Source Node to Router 1 has an MTU of 9000 bytes. The link that connects Router 1 to Router 2 has an MTU of 4000 bytes, and the link that connects Router 2 to the Destination Node has an MTU of 1500 bytes. The PMTU between the Source Node and the Destination Node is 1500 bytes.</p>
-<p id="rfc.section.3.p.2">This topology is used in examples throughout the document.</p>
+<p id="rfc.section.3.p.1">The packet truncation procedures described herein make PMTUD more resilient when:</p>
+<p></p>
+
+<ul>
+<li>The network can deliver ICMP messages from the destination node to the source node.</li>
+<li>The network cannot deliver ICMP messages from an intermediate node to the source node.</li>
+</ul>
+<p id="rfc.section.3.p.3">The following are common operational scenarios in which packet truncation procedures can make PMTUD more resilient:</p>
+<p></p>
+
+<ul>
+<li>The destination node has a viable route to the source node, but the intermediate node does not.</li>
+<li>The source node is protected by a firewall that administratively blocks all packets except for those from specified subnetworks. The destination node resides in one of the specified subnetworks, but the intermediate node does not.</li>
+<li>The source address of the original packet (i.e., the packet that elicited the ICMP message) was an anycast address. Therefore, the destination address of the ICMP message is the same anycast address.  In this case, an ICMP message from the destination node is likely to be delivered to the correct anycast instance. By contrast, an ICMP message from an intermediate node is less likely to be delivered to the correct anycast instance.</li>
+</ul>
+<p id="rfc.section.3.p.5">Packet truncation procedures do not make PMTUD more resilient when the network cannot reliably deliver any ICMP messages to the source node. The following are operational scenarios where the network cannot reliably deliver any ICMP PTB messages to the source node:</p>
+<p></p>
+
+<ul>
+<li>The source node is protected by a firewall that administratively blocks all ICMP messages.</li>
+<li>The source node is an anycast instance served by a load-balancer as defined in <a href="#RFC7690" class="xref">[RFC7690]</a>. The load-balancer does not implement the mitigations defined in <a href="#RFC7690" class="xref">[RFC7690]</a>.</li>
+</ul>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#ipv6-destination-options" id="ipv6-destination-options">IPv6 Destination Options</a>
 </h1>
@@ -473,7 +501,7 @@ ul.toc li {
 <h1 id="rfc.section.4.1">
 <a href="#rfc.section.4.1">4.1.</a> <a href="#TuncEilig" id="TuncEilig">The Truncation Eligible Option</a>
 </h1>
-<p id="rfc.section.4.1.p.1">The Truncation Eligible option indicates that the packet is eligible for truncation using basic truncation procedures <a href="#BasicP" class="xref">Section 5.1</a>. It also indicates that the packet has not been truncated.</p>
+<p id="rfc.section.4.1.p.1">The Truncation Eligible option indicates that the packet is eligible for truncation. It also indicates that the packet has not been truncated.</p>
 <p id="rfc.section.4.1.p.2">The Truncation Eligible option contains the following fields:</p>
 <p></p>
 
@@ -490,317 +518,179 @@ ul.toc li {
 <ul>
 <li>MAY include a single instance of the Truncation Eligible option.</li>
 <li>SHOULD NOT include multiple instances of the Truncation Eligible option.</li>
-<li>MUST NOT include both the Truncation Eligible option and the Enhanced Truncation Eligible option <a href="#ETuncEilig" class="xref">Section 4.2</a>.</li>
-<li>MUST NOT include both the Truncation Eligible option and the Truncated Packet option <a href="#TruncatedOpt" class="xref">Section 4.3</a>.</li>
+<li>MUST NOT include both the Truncation Eligible option and the Truncated Packet option <a href="#TruncatedOpt" class="xref">Section 4.2</a>.</li>
 </ul>
 <p id="rfc.section.4.1.p.9">NOTE 1: According to <a href="#IPv6" class="xref">[IPv6]</a>, the highest-order two bits of the Option Type (i.e., the &#8220;act&#8221; bits) specify the action taken by a processing node that does not recognize Option Type. The required action is skip over this option and continue processing the header. Therefore, IANA is requested to assign this Option Type with &#8220;act&#8221; bits &#8220;00&#8221;.</p>
 <p id="rfc.section.4.1.p.10">NOTE 2: According to <a href="#IPv6" class="xref">[IPv6]</a>, the third-highest-order bit (i.e., the &#8220;chg&#8221; bit) of the Option Type specifies whether Option Data can change on route to the packet&#8217;s destination. Because this option contains no Option Data, IANA can assign this Option Type without regard to the &#8220;chg&#8221; bit.</p>
 <h1 id="rfc.section.4.2">
-<a href="#rfc.section.4.2">4.2.</a> <a href="#ETuncEilig" id="ETuncEilig">The Enhanced Truncation Eligible Option</a>
+<a href="#rfc.section.4.2">4.2.</a> <a href="#TruncatedOpt" id="TruncatedOpt">The Truncated Packet Option</a>
 </h1>
-<p id="rfc.section.4.2.p.1">The Enhanced Truncation Eligible option indicates that the packet is eligible for truncation using enhanced truncation procedures <a href="#EnhancedP" class="xref">Section 5.2</a>. It also indicates that the packet may have been padded by the source node and / or truncated by an intermediate node.</p>
-<div id="rfc.figure.2"></div>
-<div id="ETEFig"></div>
-<pre>
-0                   1                   2                   3
-0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|  Option Type  | Option Length |    Original Payload Length    |
-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-|T|  Reserved   |
-+-+-+-+-+-+-+-+-+
-</pre>
-<p class="figure">Figure 2: The Enhanced Truncation Eligible Option</p>
-<p id="rfc.section.4.2.p.2">The Enhanced Truncation Eligible option contains:</p>
-<p></p>
-
-<ul>
-<li>Option Type - Enhanced Truncation Eligible option. Value TBD by IANA. See Notes below.</li>
-<li>Opt Data Len - Length of Option Data, measured in bytes. MUST be equal to 3.</li>
-<li>Original Payload Length (OPL) - A 16-bit unsigned integer, representing the original IPv6 Payload Length, prior to truncation, minus the length of padding bytes added by the source node. Measured in bytes. See <a href="#EnhancedP" class="xref">Section 5.2</a> for details.</li>
-<li>Truncated (T-bit) - A value of 1 indicates that the packet has been truncated. A value of 0 indicates that the packet has not been truncated.</li>
-<li>Reserved - MUST be 0 upon transmission. MUST be ignored upon reception.</li>
-</ul>
-<p id="rfc.section.4.2.p.4">IPv6 packets that include the Fragment header MUST NOT include the Enhanced Truncation Eligible option.</p>
-<p id="rfc.section.4.2.p.5">IPv6 packets whose length is less than the IPv6 minimum link MTU SHOULD NOT include the Enhanced Truncation Eligible option.</p>
-<p id="rfc.section.4.2.p.6">The IPv6 Hop-by-hop Options header SHOULD NOT include the Enhanced Truncation Eligible option.</p>
-<p id="rfc.section.4.2.p.7">The IPv6 Destination Options header:</p>
-<p></p>
-
-<ul>
-<li>MAY include a single instance of the Enhanced Truncation Eligible option.</li>
-<li>MUST NOT include multiple instances of the Enhanced Truncation Eligible option.</li>
-<li>MUST NOT include both the Enhanced Truncation Eligible option and the Truncation Eligible option.</li>
-<li>MUST NOT include both the Enhanced Truncation Eligible option and the Truncated Packet option <a href="#TruncatedOpt" class="xref">Section 4.3</a>.</li>
-</ul>
-<p id="rfc.section.4.2.p.9">NOTE 1: According to <a href="#IPv6" class="xref">[IPv6]</a>, the highest-order two bits of the Option Type (i.e., the &#8220;act&#8221; bits) specify the action taken by a processing node that does not recognize Option Type. The required action is to discard the packet and send an ICMP Parameter Problem, Code 2, message to the packet&#8217;s Source Address, pointing to the unrecognized Option Type. Therefore, IANA is requested to assign this Option Type with &#8220;act&#8221; bits &#8220;10&#8221;.</p>
-<p id="rfc.section.4.2.p.10">NOTE 2: According to <a href="#IPv6" class="xref">[IPv6]</a>, the third-highest-order bit (i.e., the &#8220;chg&#8221; bit) of the Option Type specifies whether Option Data can change on route to the packet&#8217;s destination. Because Option Data can change, IANA is requested to assign this Option Type with &#8220;chg&#8221; bit &#8220;1&#8221;.</p>
-<h1 id="rfc.section.4.3">
-<a href="#rfc.section.4.3">4.3.</a> <a href="#TruncatedOpt" id="TruncatedOpt">The Truncated Packet Option</a>
-</h1>
-<p id="rfc.section.4.3.p.1">The Truncated Packet option indicates that the packet has been truncated and is eligible for further truncation using basic procedures <a href="#BasicP" class="xref">Section 5.1</a>.</p>
-<p id="rfc.section.4.3.p.2">The Truncated Packet option contains the following fields:</p>
+<p id="rfc.section.4.2.p.1">The Truncated Packet option indicates that the packet has been truncated and is eligible for further truncation.</p>
+<p id="rfc.section.4.2.p.2">The Truncated Packet option contains the following fields:</p>
 <p></p>
 
 <ul>
 <li>Option Type - Truncated Packet option. Value TBD by IANA. See Notes below.</li>
 <li>Opt Data Len - Length of Option Data, measured in bytes. MUST be equal to 0.</li>
 </ul>
-<p id="rfc.section.4.3.p.4">IPv6 packets that include the Fragment header MUST NOT include the Truncated Packet option.</p>
-<p id="rfc.section.4.3.p.5">IPv6 packets whose length is less than the IPv6 minimum link MTU MUST NOT include the Truncated Packet option.</p>
-<p id="rfc.section.4.3.p.6">The IPv6 Hop-by-hop Options header SHOULD NOT include the Truncated Packet option.</p>
-<p id="rfc.section.4.3.p.7">The IPv6 Destination Options:</p>
+<p id="rfc.section.4.2.p.4">IPv6 packets that include the Fragment header MUST NOT include the Truncated Packet option.</p>
+<p id="rfc.section.4.2.p.5">IPv6 packets whose length is less than the IPv6 minimum link MTU MUST NOT include the Truncated Packet option.</p>
+<p id="rfc.section.4.2.p.6">The IPv6 Hop-by-hop Options header SHOULD NOT include the Truncated Packet option.</p>
+<p id="rfc.section.4.2.p.7">The IPv6 Destination Options:</p>
 <p></p>
 
 <ul>
 <li>MAY include a single instance of the Truncated Packet option.</li>
 <li>SHOULD NOT include multiple instances of the Truncated Packet option.</li>
 <li>MUST NOT include both the Truncated Packet option and the Truncation Eligible option.</li>
-<li>MUST NOT include both the Truncated Packet option and the Enhanced Truncation Eligible option.</li>
 </ul>
-<p id="rfc.section.4.3.p.9">NOTE 1: According to <a href="#IPv6" class="xref">[IPv6]</a>, the highest-order two bits of the Option Type (i.e., the &#8220;act&#8221; bits) specify the action taken by a processing node that does not recognize Option Type. The required action is to discard the packet and send an ICMP Parameter Problem, Code 2, message to the packet&#8217;s Source Address, pointing to the unrecognized Option Type. Therefore, IANA is requested to assign this Option Type with &#8220;act&#8221; bits &#8220;10&#8221;.</p>
-<p id="rfc.section.4.3.p.10">NOTE 2: According to <a href="#IPv6" class="xref">[IPv6]</a>, the third-highest-order bit (i.e., the &#8220;chg&#8221; bit) of the Option Type specifies whether Option Data of that option can change on route to the packet&#8217;s destination. Because this option contains no Option Data, IANA can assign this Option Type without regard to the &#8220;chg&#8221; bit.</p>
+<p id="rfc.section.4.2.p.9">NOTE 1: According to <a href="#IPv6" class="xref">[IPv6]</a>, the highest-order two bits of the Option Type (i.e., the &#8220;act&#8221; bits) specify the action taken by a processing node that does not recognize Option Type. The required action is to discard the packet and send an ICMP Parameter Problem, Code 2, message to the packet&#8217;s Source Address, pointing to the unrecognized Option Type. Therefore, IANA is requested to assign this Option Type with &#8220;act&#8221; bits &#8220;10&#8221;.</p>
+<p id="rfc.section.4.2.p.10">NOTE 2: According to <a href="#IPv6" class="xref">[IPv6]</a>, the third-highest-order bit (i.e., the &#8220;chg&#8221; bit) of the Option Type specifies whether Option Data of that option can change on route to the packet&#8217;s destination. Because this option contains no Option Data, IANA can assign this Option Type without regard to the &#8220;chg&#8221; bit.</p>
 <h1 id="rfc.section.5">
-<a href="#rfc.section.5">5.</a> <a href="#signaling" id="signaling">Truncation Procedures</a>
+<a href="#rfc.section.5">5.</a> <a href="#ReferenceTopology" id="ReferenceTopology">Reference Topology</a>
 </h1>
-<p id="rfc.section.5.p.1">A single IPv6 flow can contain the following:</p>
-<p></p>
-
-<ul>
-<li>Packets that contain the Truncation Eligible option.</li>
-<li>Packets that contain the Enhanced Truncation Eligible option.</li>
-<li>Packets that contain the Truncated Packet option.</li>
-<li>Packets that contain none of the above-mentioned options.</li>
-</ul>
-<p id="rfc.section.5.p.3">Packets that contain either the Truncation Eligible option or the Truncated Packet option are subject to basic truncation procedures <a href="#BasicP" class="xref">Section 5.1</a>. Packets that contain the Enhanced Truncation Eligible option are subject to enhanced truncation procedures <a href="#EnhancedP" class="xref">Section 5.2</a>. Packets that contain neither of these options are not subject to truncation.</p>
-<p id="rfc.section.5.p.4">Basic truncation procedures can detect PMTU decreases. However, they cannot:</p>
-<p></p>
-
-<ul>
-<li>Produce an accurate, initial PMTU estimate.</li>
-<li>Detect PMTU increases.</li>
-</ul>
-<p id="rfc.section.5.p.6">Enhanced truncation procedures can solve all of the above-mentioned problems. However, the overhead associated enhanced procedures is significant. Therefore, upper-layer protocols emit an appropriate mix of the above-mentioned packet types.</p>
-<h1 id="rfc.section.5.1">
-<a href="#rfc.section.5.1">5.1.</a> <a href="#BasicP" id="BasicP">Basic</a>
+<div id="rfc.figure.1"></div>
+<div id="RefTopoSect"></div>
+<pre>
+ -----------           -----------           -----------           -----------
+|   Upper   |         |           |         |           |         |   Upper   |
+|   Layer   |         |           |         |           |         |   Layer   |
+|           |         |           |         |           |         |           |
+|    IP     |&lt;-------&gt;|    IP     |&lt;-------&gt;|    IP     |&lt;-------&gt;|    IP     |
+|   Layer   |   MTU   |   Layer   |   MTU   |   Layer   |   MTU   |   Layer   |
+ -----------   9000    -----------   4000    -----------   1500    -----------
+   Source                Router 1              Router 2            Destination
+    Node                                                              Node
+</pre>
+<p class="figure">Figure 1: Reference Topology</p>
+<p id="rfc.section.5.p.1">The reference network topology contains a Source Node, intermediate nodes (i.e., Router 1, Router 2), and a Destination Node. The link that connects the Source Node to Router 1 has an MTU of 9000 bytes. The link that connects Router 1 to Router 2 has an MTU of 4000 bytes, and the link that connects Router 2 to the Destination Node has an MTU of 1500 bytes. The PMTU between the Source Node and the Destination Node is 1500 bytes.</p>
+<p id="rfc.section.5.p.2">This topology is used in examples throughout the document.</p>
+<h1 id="rfc.section.6">
+<a href="#rfc.section.6">6.</a> <a href="#signaling" id="signaling">Truncation Procedures</a>
 </h1>
-<p id="rfc.section.5.1.p.1">In the Reference Topology <a href="#ReferenceTopology" class="xref">Section 3</a>, the Source Node produces an initial estimate of the PMTU between itself and the Destination Node. This initial estimate equals the MTU of the first link on the path to the Destination Node (e.g., 9000 bytes).</p>
-<p id="rfc.section.5.1.p.2">The Source Node refrains from sending packets whose length exceeds the above-mentioned estimate. However, the above-mentioned estimate is significantly larger than the actual PMTU (1500 bytes). Therefore, the Source Node may send packets whose length exceeds the actual PMTU.</p>
-<p id="rfc.section.5.1.p.3">At some time in the future, an upper-layer protocol on the Source Node causes the IP layer to emit a packet. The packet contains a Destination Options header and the Destination Options header contains a Truncation Eligible option. The total packet length, including all headers and the payload, is 1350 bytes. Because the total packet length is less than the actual PMTU, this packet can be delivered to the Destination Node without encountering any MTU issues.</p>
-<p id="rfc.section.5.1.p.4">The IP layer on the Source Node forwards the packet to the Router 1, Router 1 forwards the packet to Router 2, and the Router 2 forwards the packet to the Destination Node. The IP layer on the Destination Node examines the Destination Options header and finds the Truncation Eligible option. The Truncation Eligible option requires no action by the Destination Node. Therefore, the Destination Node processes the next header and delivers the packet to an upper-layer protocol.</p>
-<p id="rfc.section.5.1.p.5">Subsequently, the same upper-layer protocol on the Source Node causes the IP layer to emit another packet. This packet is identical to the first, except that the total packet length is 2000 bytes.  Because the packet length is greater than the actual PMTU, this packet cannot be delivered without encountering an MTU issue.</p>
-<p id="rfc.section.5.1.p.6">The IP layer on the source node forwards the packet to Router 1, Router 1 forwards the packet to Router 2, but the Router 2 cannot forward the packet because its length exceeds the MTU of the next link in the path (i.e., 1500 bytes). Because an MTU issue has been encountered, Router 2 examines the Destination Options header, searching for either a Truncation Eligible option or a Truncated Packet option. (Normally, the Router 2 would ignore the Destination Options header).</p>
-<p id="rfc.section.5.1.p.7">Because Router 2 finds one of the above-mentioned options, it:</p>
+<p id="rfc.section.6.p.1">In the <a href="#ReferenceTopology" class="xref">Section 5</a>, the Source Node produces an initial estimate of the PMTU between itself and the Destination Node. This initial estimate equals the MTU of the first link on the path to the Destination Node (e.g., 9000 bytes).</p>
+<p id="rfc.section.6.p.2">The Source Node refrains from sending packets whose length exceeds the above-mentioned estimate. However, the above-mentioned estimate is significantly larger than the actual PMTU (1500 bytes). Therefore, the Source Node may send packets whose length exceeds the actual PMTU.</p>
+<p id="rfc.section.6.p.3">At some time in the future, an upper-layer protocol on the Source Node causes the IP layer to emit a packet. The packet contains a Destination Options header and the Destination Options header contains a Truncation Eligible option. The total packet length, including all headers and the payload, is 1350 bytes. Because the total packet length is less than the actual PMTU, this packet can be delivered to the Destination Node without encountering any MTU issues.</p>
+<p id="rfc.section.6.p.4">The IP layer on the Source Node forwards the packet to the Router 1, Router 1 forwards the packet to Router 2, and the Router 2 forwards the packet to the Destination Node. The IP layer on the Destination Node examines the Destination Options header and finds the Truncation Eligible option. The Truncation Eligible option requires no action by the Destination Node. Therefore, the Destination Node processes the next header and delivers the packet to an upper-layer protocol.</p>
+<p id="rfc.section.6.p.5">Subsequently, the same upper-layer protocol on the Source Node causes the IP layer to emit another packet. This packet is identical to the first, except that the total packet length is 2000 bytes. Because the packet length is greater than the actual PMTU, this packet cannot be delivered without encountering an MTU issue.</p>
+<p id="rfc.section.6.p.6">The IP layer on the Source Node forwards the packet to Router 1.  Router 1 forwards the packet to Router 2, but the Router 2 cannot forward the packet because its length exceeds the MTU of the next link in the path (i.e., 1500 bytes). Because an MTU issue has been encountered, Router 2 examines the Destination Options header, searching for either a Truncation Eligible option or a Truncated Packet option.  (Normally, the Router 2 would ignore the Destination Options header).</p>
+<p id="rfc.section.6.p.7">Because Router 2 finds one of the above-mentioned options, it:</p>
 <p></p>
 
 <ul>
-<li>Truncates the packet, so that its total length equals the MTU of the next link in the path (i.e. 1500 bytes).</li>
+<li>Sends an ICMP PTB message to the Source Node. The ICMP PTB message contains an MTU field indicating the MTU of the next link in the path (i.e. 1500 bytes).</li>
+<li>Truncates the packet, so that its total length equals the MTU of the next link in the path.</li>
 <li>Updates the IPv6 Payload Length.</li>
 <li>Overwrites all instances of the Truncation Eligible option with a Truncated Packet option.</li>
-<li>Updates the upper-layer checksum.</li>
+<li>Updates the upper-layer checksum (if possible)</li>
 <li>Forwards the packet to the Destination Node.</li>
 </ul>
-<p id="rfc.section.5.1.p.9">The IP layer on the Destination Node receives the packet and examines the Destination Options header. Because it finds the Truncated Packet option, it discards the packet and sends an ICMP PTB message to the Source Node. The MTU field in the ICMP PTB message represents the length of the received packet.</p>
-<p id="rfc.section.5.1.p.10">The IP layer on the Destination Node MAY deliver metadata regarding the discarded packet to an upper-layer protocol. The upper-layer protocol can use this metadata to infer the PMTU between the Source Node and itself. However, the IP Layer on the Destination Node MUST NOT deliver incomplete (i.e., truncated) data to an upper-layer protocol.</p>
-<p id="rfc.section.5.1.p.11">When the Source Node receives the ICMP PTB message, it updates its PMTU estimate, as per <a href="#RFC8201" class="xref">[RFC8201]</a>.</p>
-<p id="rfc.section.5.1.p.12">NOTE: A packet can be truncated multiple times. In the reference topology <a href="#ReferenceTopology" class="xref">Section 3</a>, assume that the Source Node sends a 5000 byte packet containing a Truncation Eligible option to the Destination Node. Using the above-mentioned procedures, Router 1 truncates the packet to 4000 bytes and Router 2 truncates it again, this time to 1500 bytes. The Destination Node receives the packet, discards it, and sends an ICMP PTB message to the Source Node. The MTU field in the ICMP PTB message represents the length of the received packet (i.e., 1500 bytes).</p>
-<h1 id="rfc.section.5.1.1">
-<a href="#rfc.section.5.1.1">5.1.1.</a> <a href="#backwards-compatibility" id="backwards-compatibility">Backwards Compatibility</a>
-</h1>
-<p id="rfc.section.5.1.1.p.1">The above-described procedures assume that all nodes recognize the Truncation Eligible option and Truncated Packet option. This section explores backwards compatibility issues, where one or more nodes do not recognize the above-mentioned options.</p>
-<p id="rfc.section.5.1.1.p.2">Assume that an intermediate node does not recognize the Truncation Eligible option or the Truncated Packet option. When that node receives a packet that it cannot forward because of an MTU issue, its behavior is as described in <a href="#IPv6" class="xref">[IPv6]</a>.  The intermediate node discards the packet and sends an ICMP PTB message to the source node. It does not examine the Destination Options header and it does not truncate or forward the packet.</p>
-<p id="rfc.section.5.1.1.p.3">Now assume that a destination node does not recognize the Truncation Eligible option. When that node receives a packet that contains the Truncation Eligible option, its behavior is determined by the highest-order two bits of the Option Type (i.e., the &#8220;act&#8221; bits). Because the &#8220;act&#8221; bits are equal to &#8220;00&#8221;, the destination node skips over the option and continues to process the packet. This is exactly what the destination node would have done if it had recognized the Truncation Eligible option.</p>
-<p id="rfc.section.5.1.1.p.4">Finally, assume that a destination node does not recognize the Truncated Packet option. When that node receives a packet that contains the Truncated Packet option, its behavior is determined by the highest-order two bits of the Option Type (i.e., the &#8220;act&#8221; bits). Because the &#8220;act&#8221; bits are equal to &#8220;10&#8221;, the destination node discards the packet and sends an ICMP Parameter Problem, Code 2, message to the packet&#8217;s Source Address, pointing to the Truncated Packet option. The destination node does not emit an ICMP PTB message. It also does not deliver metadata regarding the discarded packet to any upper-layer protocol.</p>
-<p id="rfc.section.5.1.1.p.5">The source node takes appropriate action when it receives the ICMP Parameter Problem message.</p>
-<h1 id="rfc.section.5.2">
-<a href="#rfc.section.5.2">5.2.</a> <a href="#EnhancedP" id="EnhancedP">Enhanced</a>
-</h1>
-<p id="rfc.section.5.2.p.1">In the Reference Topology <a href="#ReferenceTopology" class="xref">Section 3</a>, an upper-layer protocol on the Source Node causes the IP layer to send a packet to the Destination Node. The packet includes:</p>
-<p></p>
-
-<ul>
-<li>An IPv6 header (40 bytes)</li>
-<li>A Destination Options header (8 bytes)</li>
-<li>An upper-layer header (20 bytes)</li>
-<li>Upper-layer payload, consisting of content (10 bytes) followed by padding (8,922 bytes)</li>
-</ul>
-<p id="rfc.section.5.2.p.3">The total packet length is 9000 bytes. Likewise, the first link on the path that connects the Source Node to the Destination Node has an MTU of 9000 bytes. Therefore, this is the largest packet that can be sent from the Source Node to the Destination Node without IP fragmentation.</p>
-<p id="rfc.section.5.2.p.4">The IPv6 Payload Length is 8960 bytes. That is, the total packet length (9000 bytes) minus the IPv6 header length (40 bytes).</p>
-<p id="rfc.section.5.2.p.5">The Destination Options header includes an Enhanced Truncation Eligible option and the Enhanced Truncation Eligible option contains the following:</p>
-<p></p>
-
-<ul>
-<li>A T-bit</li>
-<li>An OPL field</li>
-</ul>
-<p id="rfc.section.5.2.p.7">The T-bit is set to zero because the packet has not been truncated. The OPL field represents the IPv6 Payload Length (8960 bytes) minus the length of the upper-layer payload padding (8,922 bytes). Therefore, the OPL field is set to 38.</p>
-<p id="rfc.section.5.2.p.8">The Source Node sends this packet to Router 1. Router 1 receives the packet, but cannot forward it because its length exceeds the MTU of the next link on the path (4000 bytes). Because an MTU issue has been encountered, Router 1 examines the Destination Options header, searching for an Enhanced Truncation Eligible option. (Normally, the Router 1 would ignore the Destination Options header).</p>
-<p id="rfc.section.5.2.p.9">Because Router 1 finds an Enhanced Truncation Eligible option, it:</p>
-<p></p>
-
-<ul>
-<li>Truncates the packet, so that its total length equals the MTU of the next link in the path (4000 bytes).</li>
-<li>Updates the IPv6 Payload Length.</li>
-<li>Updates the upper-layer checksum.</li>
-<li>Sets the T-bit.</li>
-<li>Forwards the packet to the Router 2.</li>
-</ul>
-<p id="rfc.section.5.2.p.11">Router 2 receives the packet but cannot forward it because its length exceeds the MTU of the next link on the path (1500 bytes).  Because an MTU issue has been encountered, Router 2 examines the Destination Options header, searching for an Enhanced Truncation Eligible option. (Normally, the Router 2 would ignore the Destination Options header).</p>
-<p id="rfc.section.5.2.p.12">Because Router 2 finds an Enhanced Truncation options, it:</p>
-<p></p>
-
-<ul>
-<li>Truncates the packet, so that its total length equals the MTU of the next link in the path (1500 bytes).</li>
-<li>Updates the IPv6 Payload Length.</li>
-<li>Updates the upper-layer checksum.</li>
-<li>Sets the T-bit.</li>
-<li>Forwards the packet to the Destination Node.</li>
-</ul>
-<p id="rfc.section.5.2.p.14">The IP layer on the Destination Node receives the packet, examines the Destination Options header and finds an Enhanced Truncation Eligible option. Because the T-bit is set, the IP Layer sends an ICMP PTB message to the Source Node. The MTU field in the ICMP PTB message represents the length of the received packet (1500 bytes).</p>
-<p id="rfc.section.5.2.p.15">Next, the IP Layer compares the IPv6 Payload Length with the OPL value. If the IPv6 Payload Length is less than the OPL value, the IP Layer discards the packet. If the IPv6 Payload Length equals OPL value, the IP Layer delivers the packet to an upper-layer protocol. If the IPv6 Payload Length is greater than the OPL value, the IP Layer executes the following procedure:</p>
-<p></p>
-
-<ul>
-<li>Truncate the packet, so that its total length equals the IPv6 header length (40 bytes) plus the OPL value (38 bytes).</li>
-<li>Set the IPv6 Payload Length to the OPL value.</li>
-<li>Update the upper-layer checksum.</li>
-<li>Deliver the packet to an upper-layer protocol.</li>
-</ul>
-<p id="rfc.section.5.2.p.17">In all of the above-mentioned cases, the IP layer on the Destination Node MAY deliver metadata regarding the received packet to an upper-layer protocol. The upper-layer protocol can use this metadata to infer the PMTU between the Source Node and itself.</p>
-<p id="rfc.section.5.2.p.18">NOTE: In the above-described procedure, when the Source Node emits a packet, the length of that packet MUST NOT exceed the MTU of the first link on the path to its destination. However, the length of that packet MAY be less than the MTU of the first link on the path to its destination.</p>
-<h1 id="rfc.section.5.2.1">
-<a href="#rfc.section.5.2.1">5.2.1.</a> <a href="#backwards-compatibility-1" id="backwards-compatibility-1">Backwards Compatibility</a>
-</h1>
-<p id="rfc.section.5.2.1.p.1">The above-described procedures assume that all nodes recognize the Enhanced Truncation Eligible option. This section explores backwards compatibility issues, where one or more nodes do not recognize the option.</p>
-<p id="rfc.section.5.2.1.p.2">Assume that an intermediate node does not recognize the Enhanced Truncation Eligible option. When that node receives a packet that it cannot forward because of an MTU issue, its behavior is as described in <a href="#IPv6" class="xref">[IPv6]</a>. The intermediate node discards the packet and sends an ICMP PTB message to the source node. It does not examine the Destination Options header, and it does not truncate or forward the packet.</p>
-<p id="rfc.section.5.2.1.p.3">Finally, assume that a destination node does not recognize the Enhanced Truncated Packet option. When that node receives a packet that contains the option, its behavior is determined by the highest-order two bits of the Option Type (i.e., the &#8220;act&#8221; bits).  Because the &#8220;act&#8221; bits are equal to &#8220;10&#8221;, the destination node discards the packet and sends an ICMP Parameter Problem, Code 2, message to the packet&#8217;s Source Address, pointing to the Enhanced Truncation Eligible option. The destination node does not emit an ICMP PTB message. It also does not deliver metadata regarding the discarded packet to any upper-layer protocol.</p>
-<p id="rfc.section.5.2.1.p.4">The source node takes appropriate action when it receives the ICMP Parameter Problem message.</p>
-<h1 id="rfc.section.6">
-<a href="#rfc.section.6">6.</a> <a href="#checksum-considerations" id="checksum-considerations">Checksum Considerations</a>
-</h1>
-<p id="rfc.section.6.p.1">When an intermediate node truncates a packet, it MUST update the upper-layer checksum. If the intermediate node cannot update the upper-layer checksum, its behavior is as described in <a href="#IPv6" class="xref">[IPv6]</a>. The intermediate node discards the packet and sends an ICMP PTB message to the source node. It does not truncate or forward the packet.</p>
-<p id="rfc.section.6.p.2">This is required because stateful middleboxes residing downstream of the intermediate node may attempt to validate the upper-layer checksum.  If validation fails, they may discard the packet without sending an ICMP message.</p>
+<p id="rfc.section.6.p.9">The IP layer on the Destination Node receives the packet and examines the Destination Options header. Because it finds the Truncated Packet option, it discards the packet and sends an ICMP PTB message to the Source Node. The MTU field in the ICMP PTB message represents the length of the received packet.</p>
+<p id="rfc.section.6.p.10">When the Source Node receives the ICMP PTB message, it updates its PMTU estimate, as per <a href="#RFC8201" class="xref">[RFC8201]</a>.</p>
+<p id="rfc.section.6.p.11">NOTE: A packet can be truncated multiple times. In the reference topology, assume that the Source Node sends a 5000 byte packet containing a Truncation Eligible option to the Destination Node. Using the above-mentioned procedures, Router 1 truncates the packet to 4000 bytes and Router 2 truncates it again, this time to 1500 bytes. The Destination Node receives the packet, discards it, and sends an ICMP PTB message to the Source Node. The MTU field in the ICMP PTB message represents the length of the received packet (i.e., 1500 bytes).</p>
 <h1 id="rfc.section.7">
-<a href="#rfc.section.7">7.</a> <a href="#invalid-packet-types" id="invalid-packet-types">Invalid Packet Types</a>
+<a href="#rfc.section.7">7.</a> <a href="#backwards-compatibility" id="backwards-compatibility">Backwards Compatibility</a>
 </h1>
-<p id="rfc.section.7.p.1">The following packet types are invalid:</p>
+<p id="rfc.section.7.p.1">The <a href="#signaling" class="xref">Section 6</a> of this document assumes that all nodes recognize the Truncation Eligible and Truncated Packet options. This section explores backwards compatibility issues, where one or more nodes do not recognize the above-mentioned options.</p>
+<p id="rfc.section.7.p.2">An intermediate node that does not recognize the above-mentioned options behaves exactly as described in <a href="#IPv6" class="xref">[IPv6]</a>. When it receives a packet that does not cause an MTU issue, it processes the packet. When it receives a packet that causes an MTU issue, it discards the packet and sends an ICMP PTB message to the source node. In neither case does the intermediate node examine the Destination Options header or truncate the packet.</p>
+<p id="rfc.section.7.p.3">A destination node that does not recognize the Truncation Eligible option also behaves exactly as described in <a href="#IPv6" class="xref">[IPv6]</a>.  When it receives a packet that contains the Truncation Eligible option, its behavior is determined by the highest-order two bits of the Option Type (i.e., the &#8220;act&#8221; bits). Because the &#8220;act&#8221; bits are equal to &#8220;00&#8221;, the destination node skips over the option and continues to process the packet. This is exactly what the destination node would have done if it had recognized the Truncation Eligible option.</p>
+<p id="rfc.section.7.p.4">A destination node that does not recognize the Truncated Packet option also behaves exactly as described in <a href="#IPv6" class="xref">[IPv6]</a>.  When it receives a packet that contains the Truncated Packet option, its behavior is determined by the highest-order two bits of the Option Type (i.e., the &#8220;act&#8221; bits). Because the &#8220;act&#8221; bits are equal to &#8220;10&#8221;, the destination node discards the packet and sends an ICMP Parameter Problem, Code 2, message to the packet&#8217;s Source Address, pointing to the Truncated Packet option. The destination node does not emit an ICMP PTB message.</p>
+<p id="rfc.section.7.p.5">The source node takes appropriate action when it receives the ICMP Parameter Problem message.</p>
+<h1 id="rfc.section.8">
+<a href="#rfc.section.8">8.</a> <a href="#checksum-considerations" id="checksum-considerations">Checksum Considerations</a>
+</h1>
+<p id="rfc.section.8.p.1">When an intermediate node truncates a packet, it SHOULD update the upper-layer checksum, if possible. This is desirable because it increases the probability that the truncated packet will be delivered to the destination node.</p>
+<p id="rfc.section.8.p.2">Stateful middleboxes residing downstream of the intermediate node may attempt to validate the upper-layer checksum. If the validation fails, they may discard the packet without sending an ICMP message.</p>
+<h1 id="rfc.section.9">
+<a href="#rfc.section.9">9.</a> <a href="#invalid-packet-types" id="invalid-packet-types">Invalid Packet Types</a>
+</h1>
+<p id="rfc.section.9.p.1">The following packet types are invalid:</p>
 <p></p>
 
 <ul>
 <li>Packets that contain the Fragment header and the Truncation Eligible option.</li>
-<li>Packets that contain the Fragment header and the Enhanced Truncation Eligible option.</li>
 <li>Packets that contain the Fragment header and the Packet Truncated option.</li>
-<li>Packets that contain the Truncation Eligible option and the Enhanced Truncation Eligible option.</li>
 <li>Packets that contain the Truncation Eligible option and the Packet Truncated option.</li>
-<li>Packets that contain the Enhanced Truncation Eligible option and the Packet Truncated option.</li>
 <li>Packets that specify an Option Data Length greater than 0 in the Truncation Eligible option.</li>
-<li>Packets that specify an Option Data Length different from 3 in the Enhanced Truncation Eligible option.</li>
 <li>Packets that specify an Option Data Length greater than 0 in the Truncated Packet option.</li>
 <li>Packets that have a total length less than the IPv6 minimum link MTU and contain the Packet Truncated option.</li>
-<li>Packets that have a total length less than the IPv6 minimum link MTU and contain the Enhanced Truncation Eligible Option and have the T-bit set.</li>
-<li>Packets that contain the Enhanced Truncation Eligible Option, do not have the T-bit set, and have IP Payload Length less than the OPL field.</li>
 </ul>
-<p id="rfc.section.7.p.3">If an intermediate node cannot forward one of the above-mentioned packets because of an MTU issue, its behavior is as described in <a href="#IPv6" class="xref">[IPv6]</a>. The intermediate node discards the packet and sends an ICMP PTB message to the source node. It does not truncate or forward the packet.</p>
-<p id="rfc.section.7.p.4">When the destination node receives one of the above-mentioned packets, it MUST:</p>
+<p id="rfc.section.9.p.3">If an intermediate node cannot forward one of the above-mentioned packets because of an MTU issue, its behavior is as described in <a href="#IPv6" class="xref">[IPv6]</a>. The intermediate node discards the packet and sends an ICMP PTB message to the source node. It does not truncate or forward the packet.</p>
+<p id="rfc.section.9.p.4">When the destination node receives one of the above-mentioned packets, it MUST:</p>
 <p></p>
 
 <ul>
 <li>Discard the packet</li>
 <li>Send an ICMP Parameter Problem, Code 2, message to the packet&#8217;s Source Address, pointing to the first invalid option.</li>
 </ul>
-<p id="rfc.section.7.p.6">The destination node MUST NOT send an ICMP PTB message. It also MUST NOT deliver the packet or any metadata regarding the packet to any upper-layer protocol.</p>
-<h1 id="rfc.section.8">
-<a href="#rfc.section.8">8.</a> <a href="#network-considerations" id="network-considerations">Network Considerations</a>
+<p id="rfc.section.9.p.6">The destination node MUST NOT send an ICMP PTB message.</p>
+<h1 id="rfc.section.10">
+<a href="#rfc.section.10">10.</a> <a href="#network-considerations" id="network-considerations">Network Considerations</a>
 </h1>
-<p id="rfc.section.8.p.1">The procedures described herein rely upon the networks ability:</p>
+<p id="rfc.section.10.p.1">The procedures described herein rely upon the networks ability:</p>
 <p></p>
 
 <ul>
 <li>To convey packets that contain destination options from the source node to the destination node.</li>
 <li>To convey ICMP Parameter Problem messages in the reverse direction.</li>
 </ul>
-<p id="rfc.section.8.p.3">Operational experience <a href="#RFC7872" class="xref">[RFC7872]</a> reveals that a significant number of networks drop packets that contain IPv6 destination options. Likewise, many networks drop ICMP Parameter Problem messages.</p>
+<p id="rfc.section.10.p.3">Operational experience <a href="#RFC7872" class="xref">[RFC7872]</a> reveals that a significant number of networks drop packets that contain IPv6 destination options. Likewise, many networks drop ICMP Parameter Problem messages.</p>
 <p><a href="#I-D.bonica-6man-unrecognized-opt" class="xref">[I-D.bonica-6man-unrecognized-opt]</a> describes procedures that upper-layer protocols can execute to verify that the above-mentioned requirements are satisfied. Upper-layer protocols can execute these procedures before emitting packets that contain the Truncation Eligible option.</p>
-<h1 id="rfc.section.9">
-<a href="#rfc.section.9">9.</a> <a href="#encapsulating-security-payload-considerations" id="encapsulating-security-payload-considerations">Encapsulating Security Payload Considerations</a>
+<h1 id="rfc.section.11">
+<a href="#rfc.section.11">11.</a> <a href="#encapsulating-security-payload-considerations" id="encapsulating-security-payload-considerations">Encapsulating Security Payload Considerations</a>
 </h1>
-<p id="rfc.section.9.p.1">An IPv6 packet can contain both:</p>
+<p id="rfc.section.11.p.1">An IPv6 packet can contain both:</p>
 <p></p>
 
 <ul>
 <li>An Encapsulating Security Payload (ESP) header <a href="#RFC4303" class="xref">[RFC4303]</a>.</li>
-<li>Truncation options (i.e., the Truncation Eligible, Truncated Packet, or Enhanced Truncation Eligible options).</li>
+<li>Truncation options (i.e., the Truncation Eligible or Truncated Packet options).</li>
 </ul>
-<p id="rfc.section.9.p.3">In this case, the packet MUST contain a Destination Options header that precedes the ESP. That Destination Options header contains the truncation options and is not protected by the ESP. The packet MAY also contain another Destination Options header the follows the ESP.  That Destination Options header is protected by the ESP and MUST NOT contain the truncation options.</p>
-<p id="rfc.section.9.p.4">As per <a href="#RFC4303" class="xref">[RFC4303]</a>, a packet can contain two Destination Options headers one preceding the ESP and one following the ESP.</p>
-<h1 id="rfc.section.10">
-<a href="#rfc.section.10">10.</a> <a href="#extension-header-considerations" id="extension-header-considerations">Extension Header Considerations</a>
+<p id="rfc.section.11.p.3">In this case, the packet MUST contain a Destination Options header that precedes the ESP. That Destination Options header contains the truncation options and is not protected by the ESP. The packet MAY also contain another Destination Options header the follows the ESP.  That Destination Options header is protected by the ESP and MUST NOT contain the truncation options.</p>
+<p id="rfc.section.11.p.4">As per <a href="#RFC4303" class="xref">[RFC4303]</a>, a packet can contain two Destination Options headers one preceding the ESP and one following the ESP.</p>
+<h1 id="rfc.section.12">
+<a href="#rfc.section.12">12.</a> <a href="#extension-header-considerations" id="extension-header-considerations">Extension Header Considerations</a>
 </h1>
-<p id="rfc.section.10.p.1">According to <a href="#IPv6" class="xref">[IPv6]</a>, the following IPv6 extension headers can contain options:</p>
+<p id="rfc.section.12.p.1">According to <a href="#IPv6" class="xref">[IPv6]</a>, the following IPv6 extension headers can contain options:</p>
 <p></p>
 
 <ul>
 <li>The Hop-by-hop Options header.</li>
 <li>The Destination Options header.</li>
 </ul>
-<p id="rfc.section.10.p.3">The Hop-by-hop option can be examined by each node along the path to a packet&#8217;s destination. Destination options are examined by the destination node only. However, <a href="#RFC2473" class="xref">[RFC2473]</a> provides a precedent for intermediate nodes examining the Destination options on an exception basis. (See the Tunnel Encapsulation Limit.)</p>
-<p id="rfc.section.10.p.4">The truncation options option described herein are examined by:</p>
+<p id="rfc.section.12.p.3">The Hop-by-hop option can be examined by each node along the path to a packet&#8217;s destination. Destination options are examined by the destination node only. However, <a href="#RFC2473" class="xref">[RFC2473]</a> provides a precedent for intermediate nodes examining the Destination options on an exception basis. (See the Tunnel Encapsulation Limit.)</p>
+<p id="rfc.section.12.p.4">The truncation options described herein are examined by:</p>
 <p></p>
 
 <ul>
 <li>Intermediate nodes, on an exception basis (i.e, when the packet cannot be forwarded due to MTU issues).</li>
 <li>The Destination node.</li>
 </ul>
-<p id="rfc.section.10.p.6">Therefore, the above-mentioned options can be processed most efficiently when they are contained by the Destination Option header.  When contained by the Destination Options header, the above-mentioned options are examined by intermediate nodes on an exception basis, only when they are relevant. If contained by the Hop-by-hop Options header, they are always examined by intermediate nodes, even when they are irrelevant.</p>
-<h1 id="rfc.section.11">
-<a href="#rfc.section.11">11.</a> <a href="#OpCon" id="OpCon">Operational Considerations</a>
-</h1>
-<p id="rfc.section.11.p.1">The packet truncation procedures described herein make PMTUD more resilient when:</p>
-<p></p>
-
-<ul>
-<li>The network can deliver ICMP messages from the destination node to the source node.</li>
-<li>The network cannot deliver ICMP messages from an intermediate node to the source node.</li>
-</ul>
-<p id="rfc.section.11.p.3">The following are common operational scenarios in which packet truncation procedures can make PMTUD more resilient:</p>
-<p></p>
-
-<ul>
-<li>The destination node has a viable route to the source node, but the intermediate node does not.</li>
-<li>The source node is protected by a firewall that administratively blocks all packets except for those from specified subnetworks. The destination node resides in one of the specified subnetworks, but the intermediate node does not.</li>
-<li>The source address of the original packet (i.e., the packet that elicited the ICMP message) was an anycast address. Therefore, the destination address of the ICMP message is the same anycast address.  In this case, an ICMP message from the destination node is likely to be delivered to the correct anycast instance. By contrast, an ICMP message from an intermediate node is less likely to be delivered to the correct anycast instance.</li>
-</ul>
-<p id="rfc.section.11.p.5">Packet truncation procedures do not make PMTUD more resilient when the network cannot reliably deliver any ICMP messages to the source node. The following are operational scenarios where the network cannot reliably deliver any ICMP PTB messages to the source node:</p>
-<p></p>
-
-<ul>
-<li>The source node is protected by a firewall that administratively blocks all ICMP messages.</li>
-<li>The source node is an anycast instance served by a load-balancer as defined in <a href="#RFC7690" class="xref">[RFC7690]</a>. The load-balancer does not implement the mitigations defined in <a href="#RFC7690" class="xref">[RFC7690]</a>.</li>
-</ul>
-<h1 id="rfc.section.12">
-<a href="#rfc.section.12">12.</a> <a href="#Security" id="Security">Security Considerations</a>
-</h1>
-<p id="rfc.section.12.p.1">PMTUD is vulnerable to ICMP PTB forgery attacks. The procedures described herein do nothing to mitigate that vulnerability.</p>
-<p id="rfc.section.12.p.2">The procedures described herein are susceptible to a new variation on that attack, in which an attacker forges a truncated packet. In this case, the attackers cause the Destination Node to produce an ICMP PTB message on their behalf. To some degree, this vulnerability is mitigated, because the Destination Node will not emit an ICMP PTB message in response to a truncated packet whose length is less than the IPv6 minimum link MTU.</p>
+<p id="rfc.section.12.p.6">Therefore, the above-mentioned options can be processed most efficiently when they are contained by the Destination Option header.  When contained by the Destination Options header, the above-mentioned options are examined by intermediate nodes on an exception basis, only when they are relevant. If contained by the Hop-by-hop Options header, they are always examined by intermediate nodes, even when they are irrelevant.</p>
 <h1 id="rfc.section.13">
-<a href="#rfc.section.13">13.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
+<a href="#rfc.section.13">13.</a> <a href="#Security" id="Security">Security Considerations</a>
 </h1>
-<p id="rfc.section.13.p.1">IANA is requested to allocate the following codepoints from the Destination Options and Hop-by-hop Options registry <a href="#IPv6Param" class="xref">[IPv6Param]</a>.</p>
+<p id="rfc.section.13.p.1">PMTUD is vulnerable to ICMP PTB forgery attacks. The procedures described herein do nothing to mitigate that vulnerability.</p>
+<p id="rfc.section.13.p.2">The procedures described herein are susceptible to a new variation on that attack, in which an attacker forges a truncated packet. In this case, the attackers cause the Destination Node to produce an ICMP PTB message on their behalf. To some degree, this vulnerability is mitigated, because the Destination Node will not emit an ICMP PTB message in response to a truncated packet whose length is less than the IPv6 minimum link MTU.</p>
+<p id="rfc.section.13.p.3">In order to mitigate denial of service attacks, intermediate nodes MUST rate limit the number of packets that they truncate per second.</p>
+<h1 id="rfc.section.14">
+<a href="#rfc.section.14">14.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
+</h1>
+<p id="rfc.section.14.p.1">IANA is requested to allocate the following codepoints from the Destination Options and Hop-by-hop Options registry <a href="#IPv6Param" class="xref">[IPv6Param]</a>.</p>
 <p></p>
 
 <ul>
 <li>Truncation Eligible (&#8220;act-bits&#8221; are &#8220;00. &#8220;chg-bit&#8221; can be either 0 or 1.)</li>
-<li>Enhanced Truncation Eligible (&#8220;act-bits&#8221; are &#8220;10. &#8220;chg-bit&#8221; is &#8220;1&#8221;.)</li>
 <li>Truncated Packet (&#8220;act-bits&#8221; are &#8220;10&#8221;. &#8220;chg-but can be either 0 or 1.)</li>
 </ul>
-<h1 id="rfc.section.14">
-<a href="#rfc.section.14">14.</a> <a href="#Acknowledgements" id="Acknowledgements">Acknowledgements</a>
+<h1 id="rfc.section.15">
+<a href="#rfc.section.15">15.</a> <a href="#Acknowledgements" id="Acknowledgements">Acknowledgements</a>
 </h1>
-<p id="rfc.section.14.p.1">Special thanks to Mike Heard, Geoff Huston, Joel Jaeggli, Tom Jones, Andy Smith, and Jinmei Tatuya who reviewed and commented on this document.</p>
+<p id="rfc.section.15.p.1">Special thanks to Mike Heard, Geoff Huston, Joel Jaeggli, Tom Jones, Andy Smith, and Jinmei Tatuya who reviewed and commented on this document.</p>
 <h1 id="rfc.references">
-<a href="#rfc.references">15.</a> References</h1>
+<a href="#rfc.references">16.</a> References</h1>
 <h1 id="rfc.references.1">
-<a href="#rfc.references.1">15.1.</a> Normative References</h1>
+<a href="#rfc.references.1">16.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="IPv6">[IPv6]</b></td>
@@ -834,7 +724,7 @@ ul.toc li {
 </tr>
 </tbody></table>
 <h1 id="rfc.references.2">
-<a href="#rfc.references.2">15.2.</a> Informative References</h1>
+<a href="#rfc.references.2">16.2.</a> Informative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="I-D.bonica-6man-unrecognized-opt">[I-D.bonica-6man-unrecognized-opt]</b></td>
@@ -903,6 +793,27 @@ ul.toc li {
 	  <span class="country-name vcardline">USA</span>
 	</span>
 	<span class="vcardline">EMail: <a href="mailto:rbonica@juniper.net">rbonica@juniper.net</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Igor Lubashev</span> 
+	  <span class="n hidden">
+		<span class="family-name">Lubashev</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Akamai Technologies</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:igorlord@alum.mit.edu">igorlord@alum.mit.edu</a></span>
 
   </address>
 </div>
