@@ -582,7 +582,7 @@ behalf. To some degree, this vulnerability is mitigated, because the Destination
 Node will not emit an ICMP PTB message in response to a truncated packet whose
 length is less than the IPv6 minimum link MTU.
 
-In order to mitigate denial of service attacks, intermediate nodes MUST rate
+In order to mitigate denial of service attacks, intermediate nodes SHOULD rate
 limit the number of packets that they truncate per second.
 
 
