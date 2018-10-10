@@ -45,7 +45,12 @@ author:
     ins: I. Lubashev
     name: Igor Lubashev
     org: Akamai Technologies
-    email: igorlord@alum.mit.edu
+    street: 150 Broadway
+    city: Cambridge
+    code: 02142
+    region: MA
+    country: USA
+    email: ilubashe@akamai.com
 
 normative:
 
