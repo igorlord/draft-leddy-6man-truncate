@@ -1,5 +1,58 @@
 [
 
+  {
+    "url": "https://api.github.com/repos/igorlord/draft-leddy-6man-truncate/issues/1",
+    "repository_url": "https://api.github.com/repos/igorlord/draft-leddy-6man-truncate",
+    "labels_url": "https://api.github.com/repos/igorlord/draft-leddy-6man-truncate/issues/1/labels{/name}",
+    "comments_url": "https://api.github.com/repos/igorlord/draft-leddy-6man-truncate/issues/1/comments",
+    "events_url": "https://api.github.com/repos/igorlord/draft-leddy-6man-truncate/issues/1/events",
+    "html_url": "https://github.com/igorlord/draft-leddy-6man-truncate/pull/1",
+    "id": 368001541,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MjIxMjgwMDc4",
+    "number": 1,
+    "title": "DDoS resistance is a SHOULD not a MUST",
+    "user": {
+      "login": "igorlord",
+      "id": 25256216,
+      "node_id": "MDQ6VXNlcjI1MjU2MjE2",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/25256216?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/igorlord",
+      "html_url": "https://github.com/igorlord",
+      "followers_url": "https://api.github.com/users/igorlord/followers",
+      "following_url": "https://api.github.com/users/igorlord/following{/other_user}",
+      "gists_url": "https://api.github.com/users/igorlord/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/igorlord/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/igorlord/subscriptions",
+      "organizations_url": "https://api.github.com/users/igorlord/orgs",
+      "repos_url": "https://api.github.com/users/igorlord/repos",
+      "events_url": "https://api.github.com/users/igorlord/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/igorlord/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
 
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2018-10-09T00:52:24Z",
+    "updated_at": "2018-10-09T00:52:24Z",
+    "closed_at": null,
+    "author_association": "OWNER",
+    "pull_request": {
+      "url": "https://api.github.com/repos/igorlord/draft-leddy-6man-truncate/pulls/1",
+      "html_url": "https://github.com/igorlord/draft-leddy-6man-truncate/pull/1",
+      "diff_url": "https://github.com/igorlord/draft-leddy-6man-truncate/pull/1.diff",
+      "patch_url": "https://github.com/igorlord/draft-leddy-6man-truncate/pull/1.patch"
+    },
+    "body": " It does not affect correctness of the protocol."
+  }
 
 ]
